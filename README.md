@@ -18,3 +18,6 @@ OWL ontology for knowledge involved in a NAP
 
 ## SCIENTIFIC STATEMENT
 OWL ontology in order to make scientific statement (like claim) in a NAP
+
+## Licence
+This project is licenced under Attribution-ShareAlike 4.0 International
