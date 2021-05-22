@@ -1,0 +1,178 @@
+########################################################################################################
+#       Step of Narrated Analysis Process ontology                                                     #
+########################################################################################################
+# Version : 0.0.2                                                                                      #
+# Published : 19th, October 2016                                                                       #
+# Author : A. Lebis, M. Lefevre, N. Guin, V. Luengo, under ANR HUBBLE Project N° ANR-14-CE24-0015      #
+# This work is licensed under CC-BY-SA (Creative Commons Attribution + ShareAlike)                     #
+########################################################################################################
+
+@prefix : <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.CAPTEN.org/SEED/ontologies/IAP/Step> .
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasHaecceity
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasHaecceity> rdf:type owl:ObjectProperty ;
+                                                                             rdfs:domain :Step .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasScientificHaecceity
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasScientificHaecceity> rdf:type owl:ObjectProperty ;
+                                                                                       rdfs:domain :Step ;
+                                                                                       rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#contextualize
+:contextualize rdf:type owl:ObjectProperty ;
+               rdfs:domain :Context ;
+               rdfs:range :Step .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#creator
+:creator rdf:type owl:ObjectProperty ;
+         rdfs:domain :Step ;
+         rdfs:range <http://xmlns.com/foaf/0.1/Author> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#dependsOn
+:dependsOn rdf:type owl:ObjectProperty ;
+           rdfs:domain :Context ;
+           rdfs:range :RTE .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#explainedBy
+:explainedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Optionality ;
+             rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#hasInput
+:hasInput rdf:type owl:ObjectProperty ;
+          rdfs:domain :Step ;
+          rdfs:range :RTE .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#hasObjective
+:hasObjective rdf:type owl:ObjectProperty ;
+              rdfs:domain :Step ;
+              rdfs:range :Objective .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#hasOperation
+:hasOperation rdf:type owl:ObjectProperty ;
+              rdfs:domain :Step ;
+              rdfs:range :Operator .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#hasOptionalityState
+:hasOptionalityState rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Step ;
+                     rdfs:range :Optionality .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#hasOutput
+:hasOutput rdf:type owl:ObjectProperty ;
+           rdfs:domain :Step ;
+           rdfs:range :RTE .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#hasPreviousStep
+:hasPreviousStep rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Step ;
+                 rdfs:range :Step .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#hasTreatmentType
+:hasTreatmentType rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Step ;
+                  rdfs:range :TreatmentType .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#modifies
+:modifies rdf:type owl:ObjectProperty ;
+          rdfs:domain :Operator ;
+          rdfs:range :RTE .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#creationDate
+:creationDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Step ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#orderRelation
+:orderRelation rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Step ;
+               rdfs:range xsd:positiveInteger .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Analysis
+:Analysis rdf:type owl:Class ;
+          rdfs:subClassOf :TreatmentType .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Context
+:Context rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Objective
+:Objective rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Operator
+:Operator rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Optionality
+:Optionality rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#PostTreatment
+:PostTreatment rdf:type owl:Class ;
+               rdfs:subClassOf :TreatmentType .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Pretreatment
+:Pretreatment rdf:type owl:Class ;
+              rdfs:subClassOf :TreatmentType .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE
+:RTE rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step
+:Step rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#TreatmentType
+:TreatmentType rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Author
+<http://xmlns.com/foaf/0.1/Author> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

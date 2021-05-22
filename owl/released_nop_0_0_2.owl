@@ -1,0 +1,352 @@
+########################################################################################################
+#       Narrated Operator ontology for Narrated Analysis Process                                       #
+########################################################################################################
+# Version : 0.0.2                                                                                      #
+# Published : 19th, October 2016                                                                       #
+# Author : A. Lebis, M. Lefevre, N. Guin, V. Luengo, under ANR HUBBLE Project N° ANR-14-CE24-0015      #
+# This work is licensed under CC-BY-SA (Creative Commons Attribution + ShareAlike)                     #
+########################################################################################################
+
+@prefix : <http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.CAPTEN.org/SEED/ontologies/IAP/Operator> .
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Operator> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasScientificResource
+<http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasScientificResource> rdf:type owl:ObjectProperty ;
+                                                                      rdfs:domain [ rdf:type owl:Class ;
+                                                                                    owl:unionOf ( :Empirical
+                                                                                                  :Formal
+                                                                                                )
+                                                                                  ] ;
+                                                                      rdfs:range <http://purl.org/wf4ever/ro#ResearchObject> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#consistsOf
+:consistsOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :Operator ;
+            rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#contains
+:contains rdf:type owl:ObjectProperty ;
+          rdfs:domain :Setting ;
+          rdfs:range :Setting .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#dependsOn
+:dependsOn rdf:type owl:ObjectProperty ;
+           rdfs:domain :Setting ;
+           rdfs:range :BehaviouralRule .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#equivalentOperationTo
+:equivalentOperationTo rdf:type owl:ObjectProperty ,
+                                owl:SymmetricProperty ;
+                       rdfs:domain :Operator ;
+                       rdfs:range :ImplementedOperator .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#hasBehaviour
+:hasBehaviour rdf:type owl:ObjectProperty ;
+              rdfs:domain :Operator ;
+              rdfs:range :BehaviouralRule .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#hasInfluence
+:hasInfluence rdf:type owl:ObjectProperty ;
+              rdfs:domain :Setting ;
+              rdfs:range :BehaviouralRule .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#hasObjective
+:hasObjective rdf:type owl:ObjectProperty ;
+              rdfs:domain :Operator ;
+              rdfs:range :Objective .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#hasSelectionMethod
+:hasSelectionMethod rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Value ;
+                    rdfs:range :SelectionMethod .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#informativeContent
+:informativeContent rdf:type owl:ObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :AnalysisTool
+                                                :ImplementedOperator
+                                              )
+                                ] ;
+                    rdfs:range :RelatedInformation .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#isConceptualizedBy
+:isConceptualizedBy rdf:type owl:ObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Output
+                                                :Parameter
+                                              )
+                                ] ;
+                    rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#VocabularyElement> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#isConfiguredBy
+:isConfiguredBy rdf:type owl:ObjectProperty ;
+                rdfs:domain :Operator ;
+                rdfs:range :Setting .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#isConstrainedBy
+:isConstrainedBy rdf:type owl:ObjectProperty ;
+                 rdfs:domain :AnalysisTool ;
+                 rdfs:range :DataFormat .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#isDepictedBy
+:isDepictedBy rdf:type owl:ObjectProperty ;
+              rdfs:domain :ImplementedOperator ;
+              rdfs:range :InstanciationExample .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#isInstanciableIn
+:isInstanciableIn rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Operator ;
+                  rdfs:range :AnalysisTool .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#isValuable
+:isValuable rdf:type owl:ObjectProperty ;
+            rdfs:domain :Parameter ;
+            rdfs:range :Value .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#modifies
+:modifies rdf:type owl:ObjectProperty ;
+          rdfs:domain :Output ;
+          rdfs:range :Input .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#previousVersion
+:previousVersion rdf:type owl:ObjectProperty .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#prototypicalUse
+:prototypicalUse rdf:type owl:ObjectProperty ;
+                 rdfs:domain :AnalysisTool ;
+                 rdfs:range :ImplementedOperator .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#subPartOf
+:subPartOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Input ;
+           rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#wasGeneratedBy
+:wasGeneratedBy rdf:type owl:ObjectProperty ;
+                rdfs:domain :Output ;
+                rdfs:range :Operator .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasScientificHaecceity
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasScientificHaecceity> rdf:type owl:ObjectProperty ;
+                                                                                       rdfs:domain :Setting ;
+                                                                                       rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#isConditionedBy
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#isConditionedBy> rdf:type owl:ObjectProperty ;
+                                                                                rdfs:domain :Setting ;
+                                                                                rdfs:range :Setting .
+
+
+###  https://www.w3.org/1999/02/22-rdf-syntax-ns#type
+<https://www.w3.org/1999/02/22-rdf-syntax-ns#type> rdf:type owl:ObjectProperty ;
+                                                   rdfs:domain <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step> ;
+                                                   rdfs:range rdf:Seq .
+
+
+###  https://www.w3.org/ns/oa#hasBody
+<https://www.w3.org/ns/oa#hasBody> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :Operator ;
+                                   rdfs:range <https://www.w3.org/ns/oa#Annotation> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#explanation
+:explanation rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Setting ;
+             rdfs:range xsd:string .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#hasDescription
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Setting ;
+                rdfs:range xsd:string .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#operatorVersion
+:operatorVersion rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :ImplementedOperator ;
+                 rdfs:range xsd:nonNegativeInteger .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#toolName
+:toolName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :AnalysisTool ;
+          rdfs:range xsd:Name .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#toolVersion
+:toolVersion rdf:type owl:DatatypeProperty ;
+             rdfs:domain :AnalysisTool ;
+             rdfs:range xsd:nonNegativeInteger .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/wf4ever/ro#ResearchObject
+<http://purl.org/wf4ever/ro#ResearchObject> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#VocabularyElement
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#VocabularyElement> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#AnalysisTool
+:AnalysisTool rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Arbitrary
+:Arbitrary rdf:type owl:Class ;
+           rdfs:subClassOf :SelectionMethod .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#BehaviouralRule
+:BehaviouralRule rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#DataFormat
+:DataFormat rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Empirical
+:Empirical rdf:type owl:Class ;
+           rdfs:subClassOf :SelectionMethod .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Formal
+:Formal rdf:type owl:Class ;
+        rdfs:subClassOf :SelectionMethod .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#ImplementedOperator
+:ImplementedOperator rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#InferedOperatorPrototype
+:InferedOperatorPrototype rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Input
+:Input rdf:type owl:Class ;
+       rdfs:subClassOf :Setting .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#InputPattern
+:InputPattern rdf:type owl:Class ;
+              rdfs:subClassOf :BehaviouralRule .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#InstanciationExample
+:InstanciationExample rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Objective
+:Objective rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Operator
+:Operator rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Output
+:Output rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#OutputPattern
+:OutputPattern rdf:type owl:Class ;
+               rdfs:subClassOf :BehaviouralRule .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#OutputVariation
+:OutputVariation rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Parameter
+:Parameter rdf:type owl:Class ;
+           rdfs:subClassOf :Setting .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#RelatedInformation
+:RelatedInformation rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Resource
+:Resource rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#SelectionMethod
+:SelectionMethod rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Setting
+:Setting rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#SettingPattern
+:SettingPattern rdf:type owl:Class ;
+                rdfs:subClassOf :BehaviouralRule .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Operator#Value
+:Value rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step> rdf:type owl:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
+rdf:Seq rdf:type owl:Class .
+
+
+###  https://www.w3.org/ns/oa#Annotation
+<https://www.w3.org/ns/oa#Annotation> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

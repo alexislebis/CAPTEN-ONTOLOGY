@@ -1,0 +1,304 @@
+########################################################################################################
+#       Narrated Analysis Process ontology							                                               #
+########################################################################################################
+# Version : 0.0.2                                                                                      #
+# Published : 19th, October 2016                                                                       #
+# Author : A. Lebis, M. Lefevre, N. Guin, V. Luengo, under ANR HUBBLE Project N° ANR-14-CE24-0015      #
+# This work is licensed under CC-BY-SA (Creative Commons Attribution + ShareAlike)                     #
+########################################################################################################
+
+@prefix : <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/IAP> a owl:Ontology .
+#
+#
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+#
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#concerns
+
+:concerns a owl:ObjectProperty ;
+	rdfs:domain :Objective ;
+	rdfs:range :TargetUser .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#contextualizes
+
+:contextualizes a owl:ObjectProperty ;
+	rdfs:domain :InitialRTE ;
+	rdfs:range :UtilizationContext .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#creator
+
+:creator a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range foaf:Author .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#definedBy
+
+:definedBy a owl:ObjectProperty ;
+	rdfs:domain :InitialRTE ;
+	rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step> .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#dependsOn
+
+:dependsOn a owl:ObjectProperty ;
+	rdfs:domain :UtilizationContext ;
+	rdfs:range :Objective .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#feasible
+
+:feasible a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range :UtilizationContext .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasAnalyticType
+
+:hasAnalyticType a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#AnalyticType> .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasPreviousVersion
+
+:hasPreviousVersion a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range :NAP .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasScientificHaecceity
+
+:hasScientificHaecceity a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasScientificJustification
+
+:hasScientificJustification a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range _:genid1 .
+
+_:genid1 a owl:Class ;
+	owl:unionOf _:genid3 .
+
+_:genid3 a rdf:List ;
+	rdf:first :Experimentation ;
+	rdf:rest _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first :Reference ;
+	rdf:rest rdf:nil .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasTreatmentType
+
+:hasTreatmentType a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#TreatmentType> .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#isDefinedBy
+
+:isDefinedBy a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step> .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#requires
+
+:requires a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range :InitialRTE .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#useCase
+
+:useCase a owl:ObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range :Objective .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#wasDerivedFrom
+
+:wasDerivedFrom a owl:ObjectProperty ;
+	owl:equivalentProperty :wasDerivedFrom2 ;
+	rdfs:domain :UtilizationContext ;
+	rdfs:range :NAP .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#wasDerivedFrom2
+
+:wasDerivedFrom2 a owl:ObjectProperty ;
+	rdfs:domain :Objective ;
+	rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Knowledge> .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#wasGeneratedBy
+
+:wasGeneratedBy a owl:ObjectProperty ;
+	rdfs:domain <http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Knowledge> ;
+	rdfs:range :NAP .
+#
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+
+rdf:type a owl:ObjectProperty ;
+	rdfs:domain <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step> ;
+	rdfs:range rdf:Seq .
+#
+# https://www.w3.org/ns/oa#annotedBy
+
+<https://www.w3.org/ns/oa#annotedBy> a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range <https://www.w3.org/ns/oa#Annotation> .
+#
+# https://www.w3.org/ns/oa#hasBody
+
+<https://www.w3.org/ns/oa#hasBody> a owl:ObjectProperty ;
+	rdfs:domain <https://www.w3.org/ns/oa#Annotation> ;
+	rdfs:range _:genid4 .
+
+_:genid4 a owl:Class ;
+	owl:unionOf _:genid6 .
+
+_:genid6 a rdf:List ;
+	rdf:first :Description ;
+	rdf:rest _:genid5 .
+
+_:genid5 a rdf:List ;
+	rdf:first :Example ;
+	rdf:rest rdf:nil .
+#
+#
+#
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+#
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#hasName
+
+:hasName a owl:DatatypeProperty ;
+	rdfs:domain :NAP ;
+	rdfs:range xsd:Name .
+#
+#
+#
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+#
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Knowledge
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Knowledge> a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Description
+
+:Description a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Example
+
+:Example a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Experimentation
+
+:Experimentation a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Impact
+
+:Impact a owl:Class ;
+	rdfs:comment ""@evolution .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#InitialRTE
+
+:InitialRTE a owl:Class ;
+	rdfs:subClassOf <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE> .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Issue
+
+:Issue a owl:Class ;
+	rdfs:comment ""@evolution .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#LegitimizingResource
+
+:LegitimizingResource a owl:Class ;
+	rdfs:comment ""@evolution .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#NAP
+
+:NAP a owl:Class ;
+	rdfs:subClassOf <http://www.CAPTEN.org/SEED/ontologies/IAP/Operator/Operator> ;
+	rdfs:comment "Un IPA peut être vu comme une snapshot d'un opérateur à une config. donnée, puisqu'il produit un K. output" .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Objective
+
+:Objective a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Ranking
+
+:Ranking a owl:Class ;
+	rdfs:comment ""@evolution .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Reference
+
+:Reference a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Review
+
+:Review a owl:Class ;
+	rdfs:comment ""@evolution .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Tag
+
+:Tag a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#TargetUser
+
+:TargetUser a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#UtilizationContext
+
+:UtilizationContext a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/Operator/Operator
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Operator/Operator> a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/Step#AnalyticType
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step#AnalyticType> a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE> a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step#Step> a owl:Class .
+#
+# http://www.CAPTEN.org/SEED/ontologies/IAP/Step#TreatmentType
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step#TreatmentType> a owl:Class .
+#
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
+
+rdf:Seq a owl:Class .
+#
+# http://xmlns.com/foaf/0.1/Author
+
+foaf:Author a owl:Class .
+#
+# https://www.w3.org/ns/oa#Annotation
+
+<https://www.w3.org/ns/oa#Annotation> a owl:Class .
+#
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

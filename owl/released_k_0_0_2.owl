@@ -1,0 +1,210 @@
+########################################################################################################
+#       Knowledge ontology for Narrated Analysis Process                                               #
+########################################################################################################
+# Version : 0.0.2                                                                                      #
+# Published : 19th, October 2016                                                                       #
+# Author : A. Lebis, M. Lefevre, N. Guin, V. Luengo, under ANR HUBBLE Project N° ANR-14-CE24-0015      #
+# This work is licensed under CC-BY-SA (Creative Commons Attribution + ShareAlike)                     #
+########################################################################################################
+
+@prefix : <http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge> .
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge> rdf:type owl:Ontology ;
+                                                                 rdfs:comment "" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#completedBy
+:completedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :ContextValidity ;
+             rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#entails
+:entails rdf:type owl:ObjectProperty ;
+         rdfs:domain :VocabularyElement ;
+         rdfs:range :VocSummary .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#hasSummary
+:hasSummary rdf:type owl:ObjectProperty ;
+            rdfs:domain :ExploitableOutput ;
+            rdfs:range :ExploitableOutputSummary .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#hasTerminology
+:hasTerminology rdf:type owl:ObjectProperty ;
+                rdfs:domain :ExploitableOutput ;
+                rdfs:range :Name .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#hasType
+:hasType rdf:type owl:ObjectProperty ;
+         rdfs:domain :ExploitableOutput ;
+         rdfs:range :ExploitationType .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#hasValuationPerspective
+:hasValuationPerspective rdf:type owl:ObjectProperty ;
+                         rdfs:domain :ExploitableOutput ;
+                         rdfs:range :ContextValidity .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#isAssociatedWith
+:isAssociatedWith rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Objective> ;
+                  rdfs:range :LearningEnvironment .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#isDepictedBy
+:isDepictedBy rdf:type owl:ObjectProperty ;
+              rdfs:domain :ExploitableOutput ;
+              rdfs:range :Example .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#isExplainedBy
+:isExplainedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :ExploitableOutput ;
+               rdfs:range :ReadingInstruction .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#isLinkedWith
+:isLinkedWith rdf:type owl:ObjectProperty ;
+              rdfs:domain :Name ;
+              rdfs:range :VocabularyElement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#subPartOf
+:subPartOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :ExploitableOutput ;
+           rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#wasGeneratedBy
+:wasGeneratedBy rdf:type owl:ObjectProperty ;
+                rdfs:domain :ExploitableOutput ;
+                rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#IAP> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#concerns
+<http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#concerns> rdf:type owl:ObjectProperty ;
+                                                         rdfs:domain :ExploitableOutput ;
+                                                         rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#TargetUser> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#useCase
+<http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#useCase> rdf:type owl:ObjectProperty ;
+                                                        rdfs:domain :ExploitableOutput ;
+                                                        rdfs:range <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Objective> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasHaecceity
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasHaecceity> rdf:type owl:ObjectProperty ;
+                                                                             rdfs:domain :ContextValidity .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Adaptation
+:Adaptation rdf:type owl:Class ;
+            rdfs:subClassOf <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Objective> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#ContextValidity
+:ContextValidity rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Example
+:Example rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#ExploitableOutput
+:ExploitableOutput rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#ExploitableOutputSummary
+:ExploitableOutputSummary rdf:type owl:Class ;
+                          rdfs:subClassOf :VocSummary .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#ExploitationType
+:ExploitationType rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Indicator
+:Indicator rdf:type owl:Class ;
+           rdfs:subClassOf :ExploitationType .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Institution
+:Institution rdf:type owl:Class ;
+             rdfs:subClassOf <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#TargetUser> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#LearningEnvironment
+:LearningEnvironment rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Model
+:Model rdf:type owl:Class ;
+       rdfs:subClassOf :ExploitationType .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Monitoring
+:Monitoring rdf:type owl:Class ;
+            rdfs:subClassOf <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Objective> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Name
+:Name rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#ReadingInstruction
+:ReadingInstruction rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#Student
+:Student rdf:type owl:Class ;
+         rdfs:subClassOf <http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#TargetUser> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#VocSummary
+:VocSummary rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ActionableKnowledge#VocabularyElement
+:VocabularyElement rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#IAP
+<http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#IAP> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Objective
+<http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#Objective> rdf:type owl:Class ;
+                                                          rdfs:comment "" .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#TargetUser
+<http://www.CAPTEN.org/SEED/ontologies/IAP/IAP#TargetUser> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE
+<http://www.CAPTEN.org/SEED/ontologies/IAP/Step#RTE> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,179 @@
+########################################################################################################
+#       Scientific Statements ontology for Narrated Analysis Process                                   #
+########################################################################################################
+# Version : 0.0.2                                                                                      #
+# Published : 19th, October 2016                                                                       #
+# Author : A. Lebis, M. Lefevre, N. Guin, V. Luengo, under ANR HUBBLE Project N° ANR-14-CE24-0015      #
+# This work is licensed under CC-BY-SA (Creative Commons Attribution + ShareAlike)                     #
+########################################################################################################
+
+@prefix : <http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement> .
+
+<http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#alternativeTo
+:alternativeTo rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasScientificHaecceity ,
+                                  :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#completes
+:completes rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasScientificHaecceity ,
+                              :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#consistentWith
+:consistentWith rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasScientificHaecceity ,
+                                   :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#discusses
+:discusses rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasScientificHaecceity ,
+                              :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasHaecceity
+:hasHaecceity rdf:type owl:ObjectProperty ;
+              rdfs:comment """L'eccéité consiste en l'ensemble des caractéristiques, matérielles ou immatérielles, qui fait qu'une chose est une chose particulière, et qui oeuvre en tant que support pour l'émergence de nouvelles caractéristiques propres.
+Cette propriété permet de parler de quelque chose par rapport à quelque chose et ainsi la qualifié, la différencié, et lui donner une crédibilité d'existence (entre autre une justification d'existence, comme par exemple utiliser \">\" plutôt que \"<=\", qui sont tout deux des opérateurs de comparaisons).""" .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasScientificHaecceity
+:hasScientificHaecceity rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasHaecceity ;
+                        rdfs:domain :ScientificStatement ;
+                        rdfs:range :ScientificStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#hasScientificResource
+:hasScientificResource rdf:type owl:ObjectProperty ;
+                       rdfs:domain :ScientificStatement ;
+                       rdfs:range <http://purl.org/wf4ever/ro#ResearchObject> .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#implies
+:implies rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :hasScientificHaecceity ,
+                            :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#inconsistentWith
+:inconsistentWith rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasScientificHaecceity ,
+                                     :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#isConditionedBy
+:isConditionedBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasHaecceity .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#isJustifiedBy
+:isJustifiedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasScientificHaecceity ,
+                                  :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#reliesOn
+:reliesOn rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasScientificHaecceity ,
+                             :isConditionedBy .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#respects
+:respects rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasScientificHaecceity ,
+                             :isConditionedBy .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ScientificStatement ;
+             rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/wf4ever/ro#ResearchObject
+<http://purl.org/wf4ever/ro#ResearchObject> rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Axiom
+:Axiom rdf:type owl:Class ;
+       rdfs:subClassOf :ScientificStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Claim
+:Claim rdf:type owl:Class ;
+       rdfs:subClassOf :StrongStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Conjecture
+:Conjecture rdf:type owl:Class ;
+            rdfs:subClassOf :ScientificStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Definition
+:Definition rdf:type owl:Class ;
+            rdfs:subClassOf :ScientificStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Fact
+:Fact rdf:type owl:Class ;
+      rdfs:subClassOf :StrongStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Hypothesis
+:Hypothesis rdf:type owl:Class ;
+            rdfs:subClassOf :ScientificStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Lemma
+:Lemma rdf:type owl:Class ;
+       rdfs:subClassOf :StrongStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Proposition
+:Proposition rdf:type owl:Class ;
+             rdfs:subClassOf :ScientificStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#ScientificStatement
+:ScientificStatement rdf:type owl:Class .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#StrongStatement
+:StrongStatement rdf:type owl:Class ;
+                 rdfs:subClassOf :ScientificStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Theorem
+:Theorem rdf:type owl:Class ;
+         rdfs:subClassOf :StrongStatement .
+
+
+###  http://www.CAPTEN.org/SEED/ontologies/IAP/ScientificStatement#Theory
+:Theory rdf:type owl:Class ;
+        rdfs:subClassOf :ScientificStatement .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
